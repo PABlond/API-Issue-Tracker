@@ -1,41 +1,34 @@
-/*
-*
-*
-*       Complete the API routing below
-*
-*
-*/
+const IssueManager = require("./../controllers/issueManager")
+const issueManager = new IssueManager()
+module.exports = function(app) {
+  app
+    .route("/api/issues/:project")
 
-'use strict';
-
-var expect = require('chai').expect;
-var MongoClient = require('mongodb');
-var ObjectId = require('mongodb').ObjectID;
-
-const CONNECTION_STRING = process.env.DB; //MongoClient.connect(CONNECTION_STRING, function(err, db) {});
-
-module.exports = function (app) {
-
-  app.route('/api/issues/:project')
-  
-    .get(function (req, res){
-      var project = req.params.project;
-      
+    .get(async (req, res) => {
+      const { project } = req.params
+      return res.status(201).json(await issueManager.getAllIssues(project, req.query))
     })
-    
-    .post(function (req, res){
-      var project = req.params.project;
-      
+
+    .post(async (req, res) => {
+      const { project } = req.params
+      try {
+        return res
+          .status(201)
+          .json(await issueManager.newIssue(project, req.body))
+      } catch (err) {
+        return res.status(400).json(err)
+      }
     })
-    
-    .put(function (req, res){
-      var project = req.params.project;
-      
+
+    .put(async (req, res) => {
+      const { project } = req.params
+      return res
+        .status(201)
+        .json(await issueManager.updateIssue(project, req.body))
     })
-    
-    .delete(function (req, res){
-      var project = req.params.project;
-      
-    });
-    
-};
+
+    .delete(async (req, res)  => {
+      const { project } = req.params
+      return res.status(201).json(await issueManager.deleteIssue(project, req.body))
+    })
+}

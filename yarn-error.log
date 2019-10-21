@@ -1,0 +1,63 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /home/login/google-cloud-sdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/login/Android/Sdk/emulator:/home/login/Android/Sdk/tools:/home/login/Android/Sdk/tools/bin:/home/login/Android/Sdk/platform-tools
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  10.16.2
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/login/.cache/yarn/v4/npm-add-2.0.6-248f0a9f6e5a528ef2295dbeec30532130ae2235/node_modules/add/.yarn-metadata.json: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "my-hyperdev-app",
+    "version": "0.0.1",
+    "description": "What am I about?",
+    "main": "server.js",
+    "scripts": {
+      "start": "nodemon server.js"
+    },
+    "dependencies": {
+      "add": "^2.0.6",
+      "body-parser": "^1.15.2",
+      "chai": "^3.5.0",
+      "chai-http": "^3.0.0",
+      "cors": "^2.8.1",
+      "dotenv": "^8.2.0",
+      "express": "^4.14.0",
+      "helmet": "^3.1.0",
+      "mocha": "^3.2.0",
+      "mongodb": "^2.2.16",
+      "mongoose": "^5.7.5",
+      "zombie": "^5.0.5"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://hyperdev.com/#!/project/welcome-project"
+    },
+    "keywords": [
+      "node",
+      "hyperdev",
+      "express"
+    ],
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
